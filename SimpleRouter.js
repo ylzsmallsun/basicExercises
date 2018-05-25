@@ -8,8 +8,8 @@ function Router (path) {
             return {
                 pattern: '/:id',
                 params: {
-                id: path.match(reg2)[0].substring(1)
-            }
+                    id: path.match(reg2)[0].substring(1)
+                }
             }
         }
     break;

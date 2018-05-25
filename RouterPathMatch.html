@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script type="module">
+        import Router from './SimpleRouter.js';
+        let router1 = Router('/hr');
+        let router2 = Router('/hr/mike');
+        let router3 = Router('/hr/mike/test');
+        console.log(router1());
+        router1 = null;
+        console.log(router2())
+        router2 = null;
+        console.log(router3())
+        router3 = null;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

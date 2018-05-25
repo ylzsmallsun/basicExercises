@@ -1,2 +1,2 @@
-# mywork
-我的作品
+# basic exersises
+各种小练习

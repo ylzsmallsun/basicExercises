@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div class="container">
+        <form>
+            <ul class="flex-outer">
+                <li>
+                    <label for="username">User Name:</label>
+                    <input type="text" id="username">
+                </li>
+                <li id="warningTextRow">
+                    <span class="emptyCol1"></span>
+                    <ul class="flex-inner">
+                        <li>
+                            <span id="warningText">User name should with a letter,contain 6 - 14 letters and numbers.</span> 
+                        </li>
+                    </ul>  
+                </li>
+
+                <li>
+                    <label for="password1">Password:</label>
+                    <input type="password" id="password1">
+                </li>
+                <li>
+                    <label for="password2">Confirm Password:</label>
+                    <input type="password" id="password2">
+                </li>
+                <li class="">
+                    <span></span>
+                    <ul class="flex-inner">
+                        <li>
+                            <input type="checkbox" id="subscribeNews">
+                            <label for="subscribeNews">Argee the rules?</label>
+                        </li>
+                    </ul>
+                </li>
+                <li >
+                    <span class="emptyCol1"></span>
+                    <div class="col2">
+                        <button type="submit">Register</button>
+                    </div>   
+                </li>
+            </ul>
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

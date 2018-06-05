@@ -1,0 +1,46 @@
+.container {
+    box-sizing: border-box;
+}
+.flex-outer, .flex-inner {
+    list-style-type: none;
+    padding: 0;
+}
+.flex-outer {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.flex-outer >li {
+    margin-top: 0.8rem;
+}
+.flex-outer >li, .flex-inner>li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.flex-outer >li >label, .flex-outer >li >span {
+    flex: 1 0 100px;
+    text-align: right;
+    padding: 0.5rem 1rem;
+    max-width: 200px;
+}
+.flex-outer >li >.emptyCol1 {
+    content: '';
+    min-height: 1px;
+}
+.flex-outer >li >input {
+    height: 24px;
+}
+.flex-outer >li >input, .flex-outer >li >.col2 {
+    flex: 1 0 110px; 
+}
+.flex-inner input {
+    margin: 0px 5px 0 0;
+}
+.flex-outer >li#warningTextRow {
+    margin: 0;
+    display: none;
+}
+#warningText {
+    position: absolute;
+    color: #BB0000;
+}

@@ -1,7 +1,7 @@
 function Router (path) {
 	let Router;
     let reg1 = /(\/:\w+)/g;
-	let reg2 = /(\/\w+)/g;
+    let reg2 = /(\/\w+)/g;
 	switch (path.match(reg2).length) {
  	case 1:
     	Router = function () {

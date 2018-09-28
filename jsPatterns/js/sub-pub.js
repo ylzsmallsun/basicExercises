@@ -1,9 +1,4 @@
 (function(){
-    // function EventTarget () {
-    //     this.handlers = {};
-    // }
-    // EventTarget.prototype = {
-    //     constructor: EventTarget,
     var Event = {
         on: function (type, handler) {
             if (!this.handlers) {
@@ -72,4 +67,24 @@
     person1.emit('call1', {message:'person1 is calling call1 again.'}); // no output
     person1.on('call1', person1.sayHello);
     person1.emit('call1', {message:'person1 is calling call1 again.'}); // person1 is calling call1 again.
+
+    let paper = Object.assign({}, Event);
+    let mike = {
+        haveABreak: function (news) {
+            let msg = 'Mike just read news: ' + news;
+            console.log('-------------');
+            console.log(msg);
+        }
+    };
+    let tom = {
+        haveABreak: function (news) {
+            let msg = 'Tom just read news: ' + news;
+            console.log(msg);
+            console.log('-------------');
+        }
+    };
+    paper.on('dailyNews', mike.haveABreak);
+    paper.on('dailyNews', tom.haveABreak);
+    paper.emit('dailyNews', {message: 'Coding is getting better.'});
+
 })()

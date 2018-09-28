@@ -39,26 +39,6 @@
         }
     };
     
-    /*
-    var s1 = {log: console.log},
-        s2 = {err: console.error},
-        s3 = {warn: console.warn};
-    
-    
-    publisher.subscribe(s1.log);
-    publisher.subscribe(s2.err);
-    publisher.subscribe(s3.warn);
-    
-    publisher.publish({hello: "World"});
-    
-    publisher.unsubscribe(s2.err);
-    publisher.publish("hello");
-    
-    
-    publisher.subscribe(s1.log, "log");
-    publisher.publish({obj: "log this object"}, "log");
-    */
-    
     function makePublisher(o) {
         var i;
         for (i in publisher) {
@@ -70,11 +50,11 @@
     }
     
     var paper = {
-        daily: function () {
-            this.publish("big news today");
+        daily: function (news) {
+            this.publish(news);
         },
-        monthly: function () {
-            this.publish("interesting analysis", "monthly");
+        monthly: function (news) {
+            this.publish(news, "monthly");
         }
     };
     
@@ -82,33 +62,57 @@
     
     var joe = {
         drinkCoffee: function (paper) {
-            console.log('Just read ' + paper);
+            let msg = 'Joe Just read daily news: ' + paper;
+            showMessageOnUI(msg);
         },
         sundayPreNap: function (monthly) {
-            console.log('About to fall asleep reading this ' + monthly);
+            let msg = 'Joe about to fall asleep reading monthly news: ' + monthly;
+            showMessageOnUI(msg);
+        }
+    };
+
+    let smallsun = {
+        haveABreak: function (news) {
+            let msg = 'Smallsun just read daily news: ' + news;
+            showMessageOnUI(msg);
+        },
+        sundayPreNap: function (monthly) {
+            let msg = 'Smallsun about to fall asleep reading monthly news: ' + monthly;
+            showMessageOnUI(msg);
         }
     };
     
     paper.subscribe(joe.drinkCoffee);
     paper.subscribe(joe.sundayPreNap, 'monthly');
+    paper.subscribe(smallsun.haveABreak);
+    paper.subscribe(smallsun.sundayPreNap, 'monthly');
+
     
-    paper.daily();
-    paper.daily();
-    paper.daily();
-    paper.monthly();
+    paper.daily('The world is getting better!');
+    paper.daily('Shanghai is getting better!');
+    paper.monthly('SAP is getting better!');
     
     
-    makePublisher(joe);
+    makePublisher(smallsun);
     
-    joe.tweet = function (msg) {
+    smallsun.publishTweet = function (msg) {
         this.publish(msg);
     };
     
-    paper.readTweets = function (tweet) {
-        console.log('Call big meeting! Someone ' + tweet);
+    paper.readTweet = function (tweet) {
+        let msg = 'Paper just reads smallsun\'s new tweet:  ' + tweet;
+        showMessageOnUI(msg);
     };
     
-    joe.subscribe(paper.readTweets);
+    smallsun.subscribe(paper.readTweet);
     
-    joe.tweet("hated the paper today");
+    smallsun.publishTweet("hated the paper today");
+
+    // util method
+    function showMessageOnUI (msg) {
+        let h3node = document.createElement('h4');
+        h3node.innerText = msg;
+        document.getElementById('msgContainer').appendChild(h3node);
+        console.log(msg);
+    } 
 })()
